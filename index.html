@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Мой сайт</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ВЕРХНЯЯ ШАПКА: логотип + топ-меню (кнопки генерируются в script.js, массив TOP_PAGES) -->
+  <header class="topbar">
+    <div class="logo" id="logo">
+      <span class="logo-icon">◐</span>
+      <span class="logo-text">Психологи да да</span>
+    </div>
+    <nav class="topnav" id="topnav"></nav>
+  </header>
+
+  <main class="layout">
+
+    <!-- СТРАНИЦА: ГЛАВНАЯ (левое меню + контент справа) -->
+    <section class="page" id="page-home">
+      <div class="home-grid" id="home-grid">
+        <aside class="sidebar" id="sidebar"></aside>
+
+        <div class="content" id="content">
+
+          <!-- ЭКРАН 1: блоки с темами (главное меню и вкладки 1-15) -->
+          <div class="panel" id="panel-blocks">
+            <div class="crumbs" id="crumbs-blocks"></div>
+            <div class="filter" id="filter-chips"></div>
+            <div class="blocks" id="blocks"></div>
+          </div>
+
+          <!-- ЭКРАН 2: видео (левое меню сворачивается) -->
+          <div class="panel" id="panel-video" hidden>
+            <div class="video-top">
+              <button class="btn ghost" id="menu-toggle">☰ Меню</button>
+              <div class="crumbs" id="crumbs-video"></div>
+            </div>
+            <h1 class="panel-title" id="video-title">Видео</h1>
+
+            <div class="player-card">
+              <video id="player" controls playsinline></video>
+              <div class="player-actions">
+                <button class="btn like-btn" id="like-btn">♡ <span id="like-count">0</span></button>
+                <button class="btn ghost" id="dislike-btn">👎</button>
+                <button class="btn ghost" id="share-btn">Поделиться</button>
+              </div>
+            </div>
+
+            <div class="lobby-bar">
+              <div>
+                <div class="lobby-title">Выбор лобби</div>
+                <div class="chips" id="size-chips"></div>
+              </div>
+              <button class="btn primary big" id="open-lobby">Выбрать лобби</button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ДРУГИЕ СТРАНИЦЫ (открываются кнопками топ-меню) -->
+    <section class="page" id="page-reviews" hidden>
+      <div class="card"><h1>Отзывы</h1></div>
+    </section>
+
+    <section class="page" id="page-news" hidden>
+      <div class="card"><h1>Новости</h1><p class="muted">Новостей нет их продали</p></div>
+    </section>
+
+    <section class="page" id="page-about" hidden>
+      <div class="card"><h1>О проекте</h1><p class="muted">Его придумала замечательная девушка</p></div>
+    </section>
+
+    <section class="page" id="page-account" hidden>
+      <div class="card auth">
+        <h1 id="auth-title">Создать аккаунт</h1>
+        <form id="auth-form">
+          <label>Почта
+            <input id="a-email" type="email" required placeholder="name@mail.com">
+          </label>
+          <label>Пароль
+            <input id="a-pass" type="password" required minlength="4" placeholder="••••••">
+          </label>
+          <button type="submit" class="btn primary big" id="auth-btn">Создать аккаунт</button>
+        </form>
+        <div class="msg" id="auth-msg"></div>
+        <div class="switch" id="auth-switch">Уже есть аккаунт? <a id="auth-toggle">Войти</a></div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ЛОББИ: окно почти на весь экран -->
+  <div class="overlay" id="lobby-overlay" hidden>
+    <div class="modal">
+      <div class="modal-head">
+        <h2 id="modal-title">Лобби и комнаты</h2>
+        <button class="btn ghost" id="close-lobby">✕</button>
+      </div>
+
+      <!-- Список комнат -->
+      <div id="rooms-view">
+        <div class="rooms" id="rooms"></div>
+      </div>
+
+      <!-- Форма создания комнаты -->
+      <form id="create-view" hidden>
+        <label>Название
+          <input id="f-name" required placeholder="Например: Вечерний уют">
+        </label>
+        <label>Зачем (цель)
+          <select id="f-goal">
+            <option>Просто пообщаться</option>
+            <option>Смотреть видео вместе</option>
+            <option>Играть</option>
+            <option>Учиться</option>
+          </select>
+        </label>
+        <label>Возраст
+          <select id="f-age">
+            <option>Любой</option><option>12+</option><option>16+</option><option>18+</option>
+          </select>
+        </label>
+        <label>Количество мест
+          <select id="f-size"><option>2</option><option>3</option><option>4</option></select>
+        </label>
+        <div class="form-actions">
+          <button type="button" class="btn ghost" id="cancel-create">Назад</button>
+          <button type="submit" class="btn primary">Создать</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
